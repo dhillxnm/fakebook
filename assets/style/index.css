@@ -1,0 +1,116 @@
+@charset "utf-8";
+
+body {
+    font-family: 'Nunito Sans', 'Open Sans', Arial, sans-serif;
+    background-color: #f5f5f6;
+}
+
+.container { 
+    width: min(100% - 30px, 1080px);
+    margin-inline: auto;
+}
+
+p {
+    color: #636B72;
+}
+
+/*---------------------------------------------------------------*/
+/*-------------------Utility Classes-----------------------------*/
+/*---------------------------------------------------------------*/
+
+.flex {
+    display: flex;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.center {
+    display: grid;
+    place-items: center;
+}
+
+.row-one, .price-row, .team-row, .learn-more {
+    flex-wrap: wrap;
+}
+
+.gap-10 {
+    gap: 10px;
+}
+
+.gap-20 {
+    gap: 20px;
+}
+
+.gap-30 {
+    gap: 30px;
+}
+
+
+/* header */
+
+.header {
+    background-color: rgb(0 0 0/0.7);
+    color: #fff;
+}
+
+.logo {
+    width: 800px;
+    text-align: center;
+}
+
+.user-info {
+    width: 800px;
+    text-align: center;
+}
+
+.nav {
+    width: 348px;
+    text-align: center;
+    padding-top: 9px;
+}
+
+
+/* form */
+
+main {
+    width: 100%;
+    height: 100vh;
+}
+
+.fullForm {
+    display: flex;
+    flex-direction: column;
+    margin-top: 48px;
+    height: 100%;
+    width: 37%;
+}
+
+.post-form {
+    width: 500px;
+    background-color: aqua;
+}
+
+.textArea {
+    width: 100%;
+    height: 198px;
+}
+
+
+.imageUpload {
+    position: relative;
+    top: -55px;
+    right: -18px;
+}
+
+.submit {
+    position: relative;
+    bottom: 60px;
+    right: -310px;
+    background-color: blue;
+    color: #fff;
+    padding: 9px;
+    border-radius: 11px;
+}
+
