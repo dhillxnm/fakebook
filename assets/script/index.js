@@ -28,68 +28,60 @@ const commentBox = getElement('comment-box');
 
 const comments_arr = [];
 
-
-function displayModal() {
-  modal.style.display = 'block';
-  populateProfileCard();
-}
-
-
-function closeModal() {
-  modal.style.display = 'none';
-}
+/*----------------------------------- */
+/*-------------TextArea--------------- */
+/*----------------------------------- */
 
 
 const display_comments = () => {
   let list = create('ul');
   comments_arr.slice().reverse().forEach(comment => {
-      const commentElement = create('li');
-      commentElement.innerHTML = comment;
-      const commentsHeader = createCommentsHeader(); 
-      commentElement.prepend(commentsHeader);
-      list.appendChild(commentElement);
+    const commentElement = create('li');
+    commentElement.innerHTML = comment;
+    const commentsHeader = createCommentsHeader(); 
+    commentElement.prepend(commentsHeader);
+    list.appendChild(commentElement);
   });
   commentBox.innerHTML = '';
   commentBox.appendChild(list);
 
   const headers = selectAll('.comments-header');
   headers.forEach(header => {
-      header.style.display = 'flex';
+    header.style.display = 'flex';
   });
 }
 
 
 function handleSubmit(event) {
-  event.preventDefault();
-  const commentText = getElement('comment').value;
-  const imageFile = getElement('image').files[0];
-  if (commentText.trim() !== '' || imageFile) {
+    event.preventDefault();
+    const commentText = getElement('comment').value;
+    const imageFile = getElement('image').files[0];
+    if (commentText.trim() !== '' || imageFile) {
       let commentHTML = `<p>${commentText}</p>`;
       if (imageFile) {
-          const reader = new FileReader();
-          reader.onload = function(event) {
-              commentHTML += `<img src="${event.target.result}" alt="User Image">`;
-              comments_arr.push(commentHTML);
-              display_comments();
-          }
-          reader.readAsDataURL(imageFile);
-      } else {
-          comments_arr.push(commentHTML);
-          display_comments();
-      }
-
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            commentHTML += `<img src="${event.target.result}" alt="User Image">`;
+            comments_arr.push(commentHTML);
+            display_comments();
+        }
+        reader.readAsDataURL(imageFile);
+    } else {
+        comments_arr.push(commentHTML);
+        display_comments();
+    }
+  
     getElement('comment').value = '';
     getElement('image').value = '';
+  
+    fileNameDisplay.textContent = 'Choose a file';
   }
 }
 
 
-function setCurrentDate() {
-  var currentDate = new Date();
-  var dateString = currentDate.toDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-  getElement("current-date").textContent = dateString;
-}
-
+/*----------------------------------- */
+/*-------------Comment-box------------ */
+/*----------------------------------- */
 
 const commentsHeader = createCommentsHeader();
 comments.insertBefore(commentsHeader, comments.firstChild);
@@ -108,6 +100,16 @@ function updateFileNameDisplay() {
 function createCommentsHeader() {
   const commentsHeader = create('div');
   commentsHeader.classList.add('comments-header');
+  const headerLeft = createHeaderLeft();
+  const headerRight = createHeaderRight();
+  commentsHeader.appendChild(headerLeft);
+  commentsHeader.appendChild(headerRight);
+
+  return commentsHeader;
+}
+
+
+function createHeaderLeft() {
   const headerLeft = create('div');
   headerLeft.classList.add('header-left');
   const imageIcon = create('img');
@@ -117,19 +119,47 @@ function createCommentsHeader() {
   const textElement = create('span');
   textElement.textContent = 'Manpreet Kaur';
   headerLeft.appendChild(textElement);
+
+  return headerLeft;
+}
+
+
+function createHeaderRight() {
   const headerRight = create('div');
   headerRight.classList.add('header-right');
   const currentDate = create('span');
   currentDate.id = 'current-date';
   headerRight.appendChild(currentDate);
-  commentsHeader.appendChild(headerLeft);
-  commentsHeader.appendChild(headerRight);
   const currentDateObj = new Date();
   const dateString = currentDateObj.toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric' });
   currentDate.textContent = dateString;
 
-  return commentsHeader;
+  return headerRight;
 }
+
+
+function setCurrentDate() {
+    var currentDate = new Date();
+    var dateString = currentDate.toDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    getElement("current-date").textContent = dateString;
+    }
+    
+
+/*----------------------------------- */
+/*-------------Profile-Model--------- */
+/*----------------------------------- */
+
+
+function displayModal() {
+    modal.style.display = 'block';
+    populateProfileCard();
+   }
+  
+  
+  function closeModal() {
+    modal.style.display = 'none';
+  }
+
 
 const subscriber = new Subscriber(
     123,
@@ -141,8 +171,8 @@ const subscriber = new Subscriber(
     true
   );
   
+
   function populateProfileCard() {
-    // Define icons for each <p> element
     const iconMap = {
         userName: 'fa fa-user',
         email: 'fa fa-envelope',
@@ -151,7 +181,6 @@ const subscriber = new Subscriber(
         canMonetize: 'fa-solid fa-sack-dollar'
     };
 
-    // HTML markup for profile card
     profileCard.innerHTML = `
     <div class="profile-pic">
       <img src="./assets/img/beautiful-girl-avatar.avif" alt="Profile Picture" class="profile-img">
@@ -164,20 +193,23 @@ const subscriber = new Subscriber(
     <p data-field="canMonetize" class="money">Can Monetize: ${subscriber.canMonetize ? 'Yes' : 'No'}</p>
     `;
 
-
     const paragraphs = profileCard.querySelectorAll('p');
     paragraphs.forEach(p => {
-        const fieldName = p.dataset.field;
-        const icon = document.createElement('i');
-        icon.className = iconMap[fieldName];
-        p.prepend(icon);
+    const fieldName = p.dataset.field;
+    const icon = document.createElement('i');
+    icon.className = iconMap[fieldName];
+    p.prepend(icon);
     });
 }
 
 
 
+/*----------------------------------- */
+/*---------------Event-Listner------- */
+/*----------------------------------- */
+
+listen('click', getElement('submit'), handleSubmit);
+listen('change', inputFile, updateFileNameDisplay);
+listen("DOMContentLoaded", document, setCurrentDate);
 listen('click', profilePic, displayModal);
 listen('click', closeButton, closeModal);
-listen('change', inputFile, updateFileNameDisplay);
-listen('click', getElement('submit'), handleSubmit);
-listen("DOMContentLoaded", document, setCurrentDate);
