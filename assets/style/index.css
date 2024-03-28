@@ -2,82 +2,122 @@
 
 body {
     font-family: 'Nunito Sans', 'Open Sans', Arial, sans-serif;
-    background-color: #f5f5f6;
+    background-color: #171820;
 }
 
-.container { 
-    width: min(100% - 30px, 1080px);
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-inline: auto;
 }
 
-p {
-    color: #636B72;
-}
 
 /*---------------------------------------------------------------*/
 /*-------------------Utility Classes-----------------------------*/
 /*---------------------------------------------------------------*/
 
+
 .flex {
     display: flex;
 }
 
+
 .space-between {
     justify-content: space-between;
 }
+
 
 .center {
     display: grid;
     place-items: center;
 }
 
+
 .row-one, .price-row, .team-row, .learn-more {
     flex-wrap: wrap;
 }
+
 
 .gap-10 {
     gap: 10px;
 }
 
+
 .gap-20 {
     gap: 20px;
 }
+
 
 .gap-30 {
     gap: 30px;
 }
 
 
-/* header */
+/*---------------------------------------------------------------*/
+/*-----------------------------Header----------------------------*/
+/*---------------------------------------------------------------*/
+
 
 .header {
-    background-color: rgb(0 0 0/0.7);
+    background-color: #24252D;
     color: #fff;
 }
+
+
+.logo h1 {
+    color: #1e90ff;
+}
+
 
 .logo {
     width: 800px;
     text-align: center;
 }
 
+
 .user-info {
     width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    padding-top: 2px;
+    height: 48px;
 }
+
+
+.userLogo {
+    height: 48px;
+}
+
 
 .nav {
-    width: 348px;
-    text-align: center;
+    display: flex;
+    width: 645px;
     padding-top: 9px;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+nav li:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #1e90ff;
+}
+
+.profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }
 
 
-/* form */
+/*---------------------------------------------------------------*/
+/*-------------------------------Form----------------------------*/
+/*---------------------------------------------------------------*/
 
-main {
-    width: 100%;
-    height: 100vh;
-}
 
 .fullForm {
     display: flex;
@@ -87,30 +127,276 @@ main {
     width: 37%;
 }
 
+
 .post-form {
-    width: 500px;
-    background-color: aqua;
+    width: 559px;
+    height: 260px;
 }
+
 
 .textArea {
     width: 100%;
     height: 198px;
+    border: 1px solid #000;
+    position: relative;
+    color: rgb(160, 160, 160);
+    padding: 15px;
+    font-size: 21px;
+    top: 53px;
+    background-color: #24252D;
+    border-radius: 9px;
+    resize: none; 
 }
 
 
-.imageUpload {
+#icon {
     position: relative;
-    top: -55px;
-    right: -18px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
 }
 
-.submit {
+
+.file-input-container {
     position: relative;
-    bottom: 60px;
-    right: -310px;
-    background-color: blue;
+    display: inline-block;
+}
+
+
+.file-label {
+    cursor: pointer;
+}
+
+
+#icon {
+    width: 50px; /* Adjust icon size as needed */
+    height: auto;
+}
+
+
+#file-name {
+    display: none;
+}
+
+
+#image {
+    position: relative;
+    top: 3px;
+    right: -13px;
+}
+
+
+.btn {
+    position: relative;
+    bottom: 58px;
+    right: -337px;
     color: #fff;
     padding: 9px;
     border-radius: 11px;
 }
 
+
+#submit {
+    width: 89px;
+    padding: 9px;
+    margin-right: 7px;
+    background-color: #1e90ff;
+    border-radius: 7px;
+    color: #fff;
+}
+
+
+#clear {
+    width: 89px;
+    padding: 9px;
+    background-color: #cc7000;
+    border-radius: 7px;
+    color: #fff;
+}
+
+#file-name-display {
+    color: #000;
+    position: relative;
+    top: 9px;
+}
+
+
+.file-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+
+
+.file-label {
+    cursor: pointer;
+    display: flex;
+    gap: 25px;
+}
+
+
+/*---------------------------------------------------------------*/
+/*------------------------Comment-Box----------------------------*/
+/*---------------------------------------------------------------*/
+
+
+.comments {
+    width: 577px;
+    height: auto;
+}
+
+
+#comment-box {
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    color: #000;
+}
+  
+
+#comment-box ul {
+    list-style-type: none;
+    padding: 0;
+}
+  
+
+#comment-box ul li {
+    background-color: #f9f9f9;
+    color: #000;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+}
+
+.comments-header {
+    display: none; 
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px; 
+    padding: 5px; 
+    border-radius: 5px; 
+}
+
+
+.file-label {
+    cursor: pointer;
+}
+
+
+#icon {
+    position: relative;
+    left: 16px;
+    font-family: 'Font Awesome 5 Solid';
+    font-weight: 900;
+    font-size: -31px;
+    width: 40px;
+}
+
+.header-left {
+    display: flex;
+    gap: 17px;
+}
+
+
+.header-left img  {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+
+.header-left span {
+    margin-top: 8px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+
+.header-right span {
+    font-size: 15px;
+    color: #707575;
+    font-weight: 500;
+}
+
+/*---------------------------------------------------------------*/
+/*-------------------------Profile-Box---------------------------*/
+/*---------------------------------------------------------------*/
+
+
+.modal {
+    position: absolute;
+    top: 51px;
+    right: 290px;
+}
+
+.modal-content {
+    width: 300px;
+    text-align: center;
+}
+
+
+.profile-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+}
+
+
+.profile-pic {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(0 0 0 / 0.1);
+}
+  
+.profile-card img {
+    position: relative;
+    margin-top: 52px;
+    width: 26%;
+    height: auto;
+    top: 29px;
+}
+  
+
+.profile-info {
+    padding: 20px;
+}
+  
+
+.modal h2 {
+    padding-top: 44px;
+}
+  
+.modal p {
+    overflow-wrap: break-word;
+    font-size: 17px;
+    padding-top: 8px;
+    padding-left: 52px;
+    text-align: left;
+}
+
+#close {
+    position: absolute;
+    left: 276px;
+    font-size: 26px;
+    color: #171820;
+}
+
+p i {
+    padding-right: 10px;
+    font-size: 19px;
+}
+
+.money {
+    padding-bottom: 12px;
+}

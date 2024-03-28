@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mrspecht/cdn/reset.css">
     <link rel="stylesheet" href="./assets/style/index.css" media="all">
-    <script src="./assets/script/app.js" type="module"></script>
+    <script src="./assets/script/index.js" type="module"></script>
   </head>
   <body>
     <header class="header flex gap-20">
@@ -31,32 +31,39 @@
             </nav>
         </div>
         <div class="user-info">
-          <h2>Avater</h2>
-          <!-- 
-          <form id="login-form">
-            <input type="text" id="email" class="dialog-email-input" placeholder="Email or phone number" required>
-            <input type="password" id="password" class="dialog-email-input" placeholder="Password" required>
-            <input type="submit" class="dialog-container-submit" id="contact-btn" value="Sign In">
-            <div class="forgot-password">
-                <a href="#"> Forget password?</a>   
-            </div>
-        </form>  -->
+            <div id="profile-pic">
+                <img src="./assets/img/beautiful-girl-avatar.avif" alt="Profile Picture" class="profile-img">
+              </div>
+            </header>
         </div>
     </header>
     <main>
-       <div class="container fullForm">
-       <form id="post-form">
-        <textarea name="comment" form="usrform" placeholder="Type your message here*" required class="textArea"></textarea>
-        <input type="file" id="image-upload" accept="image/*" class="imageUpload">
-        <input type="button" value="Submit" class="submit">
-       </form>
-       <section id="posts-section">
-           <!-- Posts will be dynamically added here  -->
-        </section>
-       </div>
+        <div class="container">
+            <form class="post-form">
+                <textarea id="comment" placeholder="What's new? Manpreet" class="textArea"></textarea>
+                <div class="file-input-container">
+                    <label for="image" class="file-label">
+                        <img src="./assets/img/album.png" alt="Image Icon" id="icon"> 
+                        <span id="file-name-display">Choose a file</span> <!-- Element to display file name -->
+                        <input id="image" type="file" accept="image/*" class="file-input">
+                    </label>
+                </div>
+                <div class="btn">
+                    <input id="submit" type="submit" value="Post">
+                    <button id="clear" value="clear">Clear</button>
+                </div>
+            </form>
+            <div class="comments">
+                <div id="comment-box"></div>
+            </div>
+        </div>
     </main>
+    <div class="modal" id="modal">
+        <div class="modal-content">
+          <span class="close" id="close">&times;</span>
+          <div class="profile-card" id="profile-card"></div>
+        </div>
+    </div>
  </body> 
 </html>
 
-
-    

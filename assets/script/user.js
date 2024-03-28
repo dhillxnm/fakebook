@@ -1,21 +1,35 @@
-'use strict';
-export default 'Shape';
+class User {
+  #id;
+  #name;
+  #userName;
+  #email;
 
-export class Shape {
-  constructor(name, colour) {
-    this._name = name;
-    this._colour = colour;
+  constructor(id, name, userName, email) {
+    this.#id = id;
+    this.#name = name;
+    this.#userName = userName;
+    this.#email = email;
+  }
+
+  get id() {
+    return this.#id;
   }
 
   get name() {
-    return this._name;
+    return this.#name;
   }
 
-  get colour() {
-    return this._colour;
+  get userName() {
+    return this.#userName;
+  }
+
+  get email() {
+    return this.#email;
   }
 
   getInfo() {
-    return `${this._colour} ${this._name}`;
+    return `ID: ${this.#id}, Name: ${this.#name}, Username: ${this.#userName}, Email: ${this.#email}`;
   }
 }
+
+export default User;
